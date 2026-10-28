@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.ECSRobotController" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/navy_950</item>
+        <item name="android:navigationBarColor">@color/navy_950</item>
+        <item name="android:colorAccent">@color/purple</item>
+    </style>
+
+    <style name="Theme.ECSRobotController" parent="Base.Theme.ECSRobotController" />
+</resources>

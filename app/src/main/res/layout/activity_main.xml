@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navy_950">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- HEADER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/backButton"
+                    android:layout_width="40dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="‹"
+                    android:textColor="@color/text_primary"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/topTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NIGHT VISION ROBOT"
+                        android:textColor="@color/text_primary"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/topSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SURVEILLANCE CONTROL"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/headerStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="● OFFLINE"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <!-- HOME SCREEN -->
+            <LinearLayout
+                android:id="@+id/homeScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/panel_purple"
+                    android:gravity="center"
+                    android:text="◉&#10;BOT"
+                    android:textColor="@color/text_primary"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="NIGHT VISION ROBOT"                    android:textColor="@color/text_primary"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Android controlled surveillance robot&#10;Camera • Movement • Night vision"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/openControlButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="34dp"
+                    android:text="OPEN CONTROL" />
+
+                <Button
+                    android:id="@+id/openRobotIpButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="12dp"
+                    android:text="ROBOT IP" />
+
+                <TextView
+                    android:id="@+id/homeConnectionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="● Robot not connected"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+
+            <!-- CONTROL SCREEN -->
+            <LinearLayout
+                android:id="@+id/controlScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/camera_panel">
+
+                    <WebView
+                        android:id="@+id/cameraWebView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/cameraText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="CAMERA OFFLINE"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/recordingBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|start"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/badge_red"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="● REC 00:00"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/nightVisionBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/badge_dark"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="☾ NIGHT VISION"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Connection: OFFLINE"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <!-- MOVEMENT CONTROLS -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/forwardButton"
+                        android:layout_width="72dp"
+                        android:layout_height="58dp"
+                        android:text="▲"
+                        android:textSize="26sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/leftButton"
+                            android:layout_width="72dp"
+                            android:layout_height="58dp"
+                            android:text="◀"
+                            android:textSize="26sp" />
+
+                        <Space
+                            android:layout_width="105dp"
+                            android:layout_height="1dp" />
+
+                        <Button
+                            android:id="@+id/rightButton"
+                            android:layout_width="72dp"
+                            android:layout_height="58dp"
+                            android:text="▶"
+                            android:textSize="26sp" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/backwardButton"
+                        android:layout_width="72dp"
+                        android:layout_height="58dp"
+                        android:text="▼"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:gravity="center"
+                    android:text="HOLD TO MOVE • RELEASE TO STOP"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="10sp" />
+
+                <!-- IR + RECORD -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/irButton"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_weight="1"
+                        android:text="IR  OFF" />
+
+                    <Button
+                        android:id="@+id/recordButton"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="● RECORD" />
+
+                </LinearLayout>
+
+                <!-- STATUS -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/panel_dark"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/batteryText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="▰ Battery --%"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/wifiText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⌁ Wi-Fi"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/commandText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Ready for command"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+
+            <!-- WI-FI / ROBOT IP SCREEN -->
+            <LinearLayout
+                android:id="@+id/wifiScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WI-FI &amp; ROBOT IP"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Enter the IP address of the ESP32 controller. The usual access-point address is 192.168.4.1."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/robotIpInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/input_dark"
+                    android:hint="http://192.168.4.1"
+                    android:inputType="textUri"
+                    android:paddingHorizontal="16dp"
+                    android:text="http://192.168.4.1"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary" />
+
+                <Button
+                    android:id="@+id/connectButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="12dp"
+                    android:text="SAVE &amp; CONNECT" />
+
+            </LinearLayout>
+
+
+            <!-- RECORDING SCREEN -->
+            <LinearLayout
+                android:id="@+id/recordingScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RECORDING"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/recordingStatusText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/panel_dark"
+                    android:padding="16dp"
+                    android:text="● Not recording&#10;Choose where your robot saves video."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <RadioGroup
+                    android:id="@+id/storageGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/storagePhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Phone storage"
+                        android:textColor="@color/text_primary" />
+
+                    <RadioButton
+                        android:id="@+id/storageSd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Robot SD card"
+                        android:textColor="@color/text_primary" />
+
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/recordingActionButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="18dp"
+                    android:text="START RECORDING" />
+
+            </LinearLayout>
+
+
+            <!-- DISCONNECTED SCREEN -->
+            <LinearLayout
+                android:id="@+id/disconnectedScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/panel_dark"
+                    android:gravity="center"
+                    android:text="!"
+                    android:textColor="@color/red"
+                    android:textSize="42sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Robot not connected"
+                    android:textColor="@color/text_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Check that your phone is connected to the robot Wi-Fi network and that the IP address is correct."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/tryAgainButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="26dp"
+                    android:text="TRY AGAIN" />
+
+                <Button
+                    android:id="@+id/disconnectedSettingsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="10dp"
+                    android:text="OPEN ROBOT IP" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
